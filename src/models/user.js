@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
 
-    isOrganiser: {
+    isAdmin: {
         type: Boolean, 
         required: true
     },
@@ -17,16 +17,7 @@ const userSchema = new mongoose.Schema({
         required: true, 
         trim: true
     }, 
-    age: {
-        type: Number, 
-
-    }, 
-    nickName :{
-        type: String, 
-        trim: true,
-
-    },
-    email: {
+        email: {
         type: String, 
         required: true, 
         unique:true,
@@ -38,13 +29,6 @@ const userSchema = new mongoose.Schema({
         type: String, 
         required: true, 
         trim: true
-    },
-    parentName: {
-        type: String, 
-        required: true
-    },
-    avatarPicture: {
-        type: Buffer
     }
 
 

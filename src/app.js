@@ -3,6 +3,6 @@ require('./db/mongoose')
 
 const app = express
 
-app.request(express.json())
+app.use(express.json())
 
 module.exports = app
