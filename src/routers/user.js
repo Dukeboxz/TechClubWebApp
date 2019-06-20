@@ -16,3 +16,13 @@ router.post('/users', async (req, res)=>{
     }
 
 })
+
+router.post('/users/login/kids', async (req, res)=>{
+    try{
+
+        
+        
+    }catch(error){
+        res.status(400).send()
+    }
+})

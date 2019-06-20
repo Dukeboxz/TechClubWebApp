@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
+const utils = require('./modelsUtils')
 
 const kidSchema = new mongoose.Schema({
     name: {
@@ -74,6 +75,14 @@ const kidSchema = new mongoose.Schema({
     }]
     
 
+})
+
+kidSchema.pre('save', async function(next){
+    const user = this
+    if(user.isModified('password')){
+        user.password = await utils.passwordEncrypt(user.password)
+    }
+    next()
 })
 
 const Kid = mongoose.model('Kid', kidSchema)
