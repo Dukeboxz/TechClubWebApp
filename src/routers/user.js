@@ -3,6 +3,7 @@ const router = new express.Router()
 const User = require('../models/user')
 
 
+
 router.post('/users', async (req, res)=>{
     const user = new User(req.body)
 
@@ -17,7 +18,9 @@ router.post('/users', async (req, res)=>{
 
 })
 
-router.post('/users/login/kids', async (req, res)=>{
+
+
+router.post('/users/login/', async (req, res)=>{
     try{
 
         
