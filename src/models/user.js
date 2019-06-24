@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const utils = require('./modelsUtils')
 
 
 const userSchema = new mongoose.Schema({
@@ -33,6 +34,14 @@ const userSchema = new mongoose.Schema({
 
 
 })
+
+userSchema.pre('save' , async function(next){
+    const user = this
+    if(user.isModified('password')){
+
+        user.password = await utils.passwordEncrypt(user.password)
+    }
+}
 
 const User = mongoose.model('User', userSchema)
 
