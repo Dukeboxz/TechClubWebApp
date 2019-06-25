@@ -13,7 +13,7 @@ const badgesSchema = new mongoose.Schema({
         required: true,
         unique: true
     }, 
-    pointNeeded: {
+    pointsNeeded: {
         type: Number, 
         required: true
     },

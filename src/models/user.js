@@ -41,7 +41,7 @@ userSchema.pre('save' , async function(next){
 
         user.password = await utils.passwordEncrypt(user.password)
     }
-}
+})
 
 const User = mongoose.model('User', userSchema)
 
