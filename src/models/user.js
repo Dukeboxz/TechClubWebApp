@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
+const utils = require('./modelsUtils')
 
 
 const userSchema = new mongoose.Schema({
 
-    isOrganiser: {
+    isAdmin: {
         type: Boolean, 
         required: true
     },
@@ -17,16 +18,7 @@ const userSchema = new mongoose.Schema({
         required: true, 
         trim: true
     }, 
-    age: {
-        type: Number, 
-
-    }, 
-    nickName :{
-        type: String, 
-        trim: true,
-
-    },
-    email: {
+        email: {
         type: String, 
         required: true, 
         unique:true,
@@ -38,16 +30,17 @@ const userSchema = new mongoose.Schema({
         type: String, 
         required: true, 
         trim: true
-    },
-    parentName: {
-        type: String, 
-        required: true
-    },
-    avatarPicture: {
-        type: Buffer
     }
 
 
+})
+
+userSchema.pre('save' , async function(next){
+    const user = this
+    if(user.isModified('password')){
+
+        user.password = await utils.passwordEncrypt(user.password)
+    }
 })
 
 const User = mongoose.model('User', userSchema)

@@ -1,7 +1,4 @@
-const express = require('express')
-require('./db/mongoose')
-
-const app = express()
+const app = require('./app')
 const port = process.env.PORT || 3000
 
 app.listen(port, ()=>{
