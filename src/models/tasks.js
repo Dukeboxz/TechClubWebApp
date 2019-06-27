@@ -15,6 +15,10 @@ const taskSchema = new mongoose.Schema({
     },
      description: {
         type: String
+    }, 
+    level: {
+        type: Number, 
+        required: true
     }
 })
 
